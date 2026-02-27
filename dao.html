@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CivicChain Africa DAO Hub</title>
-
-    <!-- Fonts, Tailwind, Alpine -->
+    <title>CivicChain Africa DAO Hub | Community Governance</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind & Alpine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -21,33 +24,148 @@
             }
         }
     </script>
+
     <style>
         [x-cloak] { display: none !important; }
+
+        .glass-nav { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.04); }
+        .heading-gradient {
+            background: linear-gradient(to right, #10B981, #F59E0B, #10B981);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 6s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
         .dao-card { background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.08); transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
         .dao-card:hover { border-color: #10B981; transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.1); }
+
         h1, h2, h3, h4, .nav-link { font-family: 'Space Grotesk', sans-serif; }
     </style>
 </head>
-<body class="bg-white text-midnight antialiased">
+<body x-data="{ mobileOpen: false }" class="bg-softwhite text-midnight antialiased transition-colors duration-500">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav bg-softwhite border-b">
+    <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 md:h-24 flex justify-between items-center">
             <a href="index.html" class="flex items-center -ml-2 md:-ml-4 transition-transform hover:scale-105">
                 <img src="CCA 1.png" alt="CCA Logo" class="h-24 md:h-32 w-auto object-contain">
             </a>
             <div class="hidden lg:flex items-center space-x-8 text-[12px] font-bold uppercase tracking-[0.15em] nav-link">
-                <a href="index.html" class="hover:text-emerald transition text-midnight">Home</a>
-                <a href="#" class="hover:text-emerald transition text-midnight">DAO Hub</a>
+                <a href="index.html#pillars" class="hover:text-emerald transition text-midnight">Pillars</a>
+                <a href="#dao" class="hover:text-emerald transition text-midnight">DAO Hub</a>
+                <a href="index.html#blog" class="hover:text-emerald transition text-midnight">Insights</a>
+                <div class="flex items-center gap-3">
+                    <a href="index.html#volunteer" class="border-2 border-midnight px-5 py-2 rounded-full hover:bg-midnight hover:text-white transition">Volunteer</a>
+                    <a href="index.html#join" class="bg-midnight text-white px-7 py-2.5 rounded-full hover:bg-emerald transition shadow-lg">Donate</a>
+                </div>
             </div>
+            <button @click="mobileOpen = !mobileOpen" class="lg:hidden text-midnight p-2 focus:outline-none">
+                <svg x-show="!mobileOpen" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg x-show="mobileOpen" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileOpen" x-cloak class="lg:hidden absolute top-20 md:top-24 left-0 w-full bg-white p-8 space-y-6 shadow-2xl border-t text-center font-bold nav-link z-50">
+            <a href="index.html#pillars" class="block w-full py-2">Pillars</a>
+            <a href="#dao" class="block w-full py-2">DAO Hub</a>
+            <a href="index.html#join" class="block bg-midnight text-white py-5 rounded-2xl text-lg tracking-widest uppercase">Donate</a>
         </div>
     </nav>
 
-    <!-- DAO Hub Sections -->
-    <main class="bg-white min-h-screen pb-32 pt-32">
-        <!-- Include all DAO Hub sections exactly as in your current DAO Hub code -->
-        <!-- DAO Hero, Why DAO, Stakeholders Grid, DAO Principles -->
-    </main>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-midnight px-6">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+                <span class="block mb-2 tracking-tight">CivicChain Africa</span>
+                <span class="heading-gradient uppercase tracking-tighter italic">DAO Governance Hub</span>
+            </h1>
+            <p class="text-white text-lg md:text-xl max-w-3xl mx-auto mb-10 font-medium leading-relaxed drop-shadow-lg">
+                Join our decentralized autonomous organization (DAO) to co-govern funding decisions, vote on initiatives, and help scale transparent humanitarian and climate projects across Sub-Saharan Africa.
+            </p>
+            <a href="#dao" class="bg-emerald text-white px-10 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-2xl uppercase text-xs md:text-sm tracking-[0.15em]">Explore the DAO</a>
+        </div>
+    </section>
+
+    <!-- DAO Overview -->
+    <section id="dao" class="py-20 md:py-32 bg-softwhite px-6 md:px-10">
+        <div class="max-w-7xl mx-auto text-center mb-16 md:mb-24">
+            <h2 class="text-midnight text-3xl md:text-5xl font-bold mb-4 md:mb-6 tracking-tight">How Our DAO Works</h2>
+            <p class="text-slate text-base md:text-lg max-w-3xl mx-auto font-light leading-relaxed">
+                The CivicChain Africa DAO is a community-led governance platform. Members can submit proposals, vote on fund allocation, and monitor project milestones in real time. Every transaction is transparent and auditable on the blockchain.
+            </p>
+        </div>
+
+        <!-- DAO Pillars / Cards -->
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="dao-card rounded-3xl p-6 text-center">
+                <img src="proposal.png" alt="Proposals" class="mx-auto h-36 w-full object-cover rounded-2xl mb-6">
+                <h3 class="text-2xl font-bold mb-2">Submit Proposals</h3>
+                <p class="text-slate text-sm font-light">Any member can submit a project or initiative for funding, detailing expected impact and milestones.</p>
+            </div>
+            <div class="dao-card rounded-3xl p-6 text-center">
+                <img src="vote.png" alt="Voting" class="mx-auto h-36 w-full object-cover rounded-2xl mb-6">
+                <h3 class="text-2xl font-bold mb-2">Participate in Voting</h3>
+                <p class="text-slate text-sm font-light">Members cast votes on proposals using a transparent, blockchain-verified process.</p>
+            </div>
+            <div class="dao-card rounded-3xl p-6 text-center">
+                <img src="funding.png" alt="Funding" class="mx-auto h-36 w-full object-cover rounded-2xl mb-6">
+                <h3 class="text-2xl font-bold mb-2">Milestone Funding</h3>
+                <p class="text-slate text-sm font-light">Funds are released in phases after milestone verification, ensuring accountability and measurable impact.</p>
+            </div>
+            <div class="dao-card rounded-3xl p-6 text-center">
+                <img src="report.png" alt="Reports" class="mx-auto h-36 w-full object-cover rounded-2xl mb-6">
+                <h3 class="text-2xl font-bold mb-2">Impact Reports</h3>
+                <p class="text-slate text-sm font-light">All projects generate transparent, verifiable reports on-chain, accessible to every DAO member.</p>
+            </div>
+            <div class="dao-card rounded-3xl p-6 text-center">
+                <img src="community.png" alt="Community" class="mx-auto h-36 w-full object-cover rounded-2xl mb-6">
+                <h3 class="text-2xl font-bold mb-2">Community Governance</h3>
+                <p class="text-slate text-sm font-light">Members guide the organization’s priorities, ensuring community-led development across the continent.</p>
+            </div>
+            <div class="dao-card rounded-3xl p-6 text-center">
+                <img src="analytics.png" alt="Analytics" class="mx-auto h-36 w-full object-cover rounded-2xl mb-6">
+                <h3 class="text-2xl font-bold mb-2">Data Transparency</h3>
+                <p class="text-slate text-sm font-light">Blockchain analytics allow full auditability of fund flows and measurable impact metrics for every project.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 md:py-32 bg-midnight text-white text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Become a DAO Member Today</h2>
+        <p class="max-w-2xl mx-auto mb-10 text-lg md:text-xl font-light leading-relaxed">
+            Participate in community-led governance. Help fund transformative projects. Ensure transparency and accountability in humanitarian and climate initiatives.
+        </p>
+        <a href="index.html#join" class="bg-emerald text-white px-10 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-2xl uppercase text-xs md:text-sm tracking-[0.15em]">Join the DAO →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-midnight text-white px-6 md:px-10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="font-bold text-lg mb-2">CivicChain Africa</h3>
+                <p class="text-slate-300 text-sm font-light">Leading transparent humanitarian and climate impact via blockchain technology.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Quick Links</h4>
+                <ul class="space-y-2 text-slate-300 text-sm font-light">
+                    <li><a href="index.html#pillars" class="hover:text-emerald">Pillars</a></li>
+                    <li><a href="#dao" class="hover:text-emerald">DAO Hub</a></li>
+                    <li><a href="index.html#blog" class="hover:text-emerald">Insights</a></li>
+                    <li><a href="index.html#join" class="hover:text-emerald">Donate</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Contact</h4>
+                <p class="text-slate-300 text-sm font-light">Email: info@civicchain.africa</p>
+                <p class="text-slate-300 text-sm font-light">Phone: +234 800 123 4567</p>
+            </div>
+        </div>
+        <p class="mt-12 text-slate-400 text-xs text-center">&copy; 2026 CivicChain Africa. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
