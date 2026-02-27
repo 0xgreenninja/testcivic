@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicChain Africa DAO Hub</title>
+
+    <!-- Fonts, Tailwind, Alpine -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { midnight: '#0F172A', emerald: '#10B981', gold: '#F59E0B', softwhite: '#F8FAFC' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Space Grotesk', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .dao-card { background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.08); transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
+        .dao-card:hover { border-color: #10B981; transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.1); }
+        h1, h2, h3, h4, .nav-link { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-midnight antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav bg-softwhite border-b">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 md:h-24 flex justify-between items-center">
+            <a href="index.html" class="flex items-center -ml-2 md:-ml-4 transition-transform hover:scale-105">
+                <img src="CCA 1.png" alt="CCA Logo" class="h-24 md:h-32 w-auto object-contain">
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 text-[12px] font-bold uppercase tracking-[0.15em] nav-link">
+                <a href="index.html" class="hover:text-emerald transition text-midnight">Home</a>
+                <a href="#" class="hover:text-emerald transition text-midnight">DAO Hub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- DAO Hub Sections -->
+    <main class="bg-white min-h-screen pb-32 pt-32">
+        <!-- Include all DAO Hub sections exactly as in your current DAO Hub code -->
+        <!-- DAO Hero, Why DAO, Stakeholders Grid, DAO Principles -->
+    </main>
+
+</body>
+</html>
